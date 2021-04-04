@@ -1,25 +1,20 @@
-
 function largestNumbers(arr) {
-    let i;
-    let largest = second = arr[0];
-
     if (arr.length < 2) {
         throw 'Invalid Input';
     }
-
-    for (i = 1; i < arr.length; i++){
-        if (arr[i] > largest){
-            largest = arr[i];
-        }
-    }
-
-    for (i = 0; i < arr.length; i++){
-        if (arr[i] > second && arr[i] < largest){
-            second = arr[i];
-        }
+    let largest = 0;
+    let second = 0;
+    for (let i = 0; i < arr.length; i++){
+      if (arr[i] > largest){
+          if (largest > second) {
+            second = largest
+          }
+          largest = arr[i];
+      } else if (arr[i] > second) {
+        second = arr[i];
+      }
     }
     return [largest, second]
 }
-
-let arr = [1, 12, 5, 18, 3];
-console.log("2 Largest numbers in given array are: " + largestNumbers(arr));
+let arr = [101, 100, 18, 1, 100, 2, 1];
+console.log('2 Largest numbers in given array are: ' + largestNumbers(arr));
